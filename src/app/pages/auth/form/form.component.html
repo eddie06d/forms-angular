@@ -1,0 +1,105 @@
+
+<form [formGroup]="authForm" (ngSubmit)="onSubmit()">
+  <div class="flex flex-col mb-5">
+    <div class="relative">
+      <div
+        class="
+          inline-flex
+          items-center
+          justify-center
+          absolute
+          left-0
+          top-0
+          h-full
+          w-10
+          text-gris
+        "
+      >
+        <span class="material-icons">mail</span>
+      </div>
+
+      <input
+        id="email" formControlName="email"
+        type="email"
+        name="email"
+        class="
+          text-sm
+          placeholder-gris-text
+          pl-10
+          pr-4
+          rounded
+          border border-gris
+          w-full
+          py-2
+          focus:outline-none focus:border-gris
+        "
+        placeholder="     Usuario"
+      />
+    </div>
+  </div>
+  <div class="flex flex-col mb-6">
+    <div class="relative">
+      <div
+        class="
+          inline-flex
+          items-center
+          justify-center
+          absolute
+          left-0
+          top-0
+          h-full
+          w-10
+          text-gris
+        "
+      >
+        <span>
+          <span class="material-icons">visibility</span>
+        </span>
+      </div>
+
+      <input formControlName="password"
+        id="password"
+        type="password"
+        name="password"
+        class="
+          text-sm
+          placeholder-gris-text
+          pl-10
+          pr-4
+          rounded
+          border border-gris
+          w-full
+          py-2
+          font-normal
+          focus:outline-none focus:border-gris
+        "
+        placeholder="     Contraseña"
+      />
+    </div>
+  </div>
+
+  <div class="flex w-full">
+    <button
+      type="submit"
+      class="
+        flex
+        mt-2
+        items-center
+        justify-center
+        focus:outline-none
+        text-white text-sm
+        sm:text-base
+        bg-blue-light
+        hover:bg-blue
+        rounded
+        py-2
+        w-full
+        transition
+        duration-150
+        ease-in
+      "
+    >
+      <span class="mr-2 font-light">Ingresar</span>
+    </button>
+  </div>
+  </form>

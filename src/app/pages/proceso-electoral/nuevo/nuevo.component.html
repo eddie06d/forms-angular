@@ -1,0 +1,105 @@
+<div class="">
+  <p
+    style="
+      font-family: 'Poppins';
+      font-style: normal;
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 30px;
+    "
+    class="mb-4 text-white"
+  >
+    Proceso Electoral \ {{ id ? 'Editar' : 'Nuevo' }}
+  </p>
+
+  <div
+    class="w-full mx-auto bg-white shadow-lg rounded-lg border border-gray-200"
+  >
+    <header class="px-5 py-4">
+      <span class="description text-sm py-2 border-gray-400 mb-2 text-gris"
+        >Ingrese el Nuevo Proceso Electoral</span
+      >
+    </header>
+  <form [formGroup]="formulario" (ngSubmit)="onStore()">
+    <div class="p-3">
+      <div class="mx-auto">
+        <input type="hidden" formControlName="id"
+        id="id" name="id">
+        <div class="md:inline-flex md:space-y-0 w-full p-1 text-gray-500">
+          <label for="title" class="text-sm font-poppins text-gris"
+            >Nombre de Usuario:</label
+          >
+          <div class="md:w-2/3 mx-auto">
+            <div class="sm-w-full inline-flex">
+              <input formControlName="user"
+                id="user"
+                type="text"
+                class="
+                  appearance-none
+                  rounded-lg
+                  border border-gris-bg border-b
+                  pl-8
+                  pr-6
+                  w-full
+                  py-2
+                  bg-white
+                  focus:border-blue-light
+                  text-sm
+                  focus:outline-none
+                "
+                placeholder=""
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="md:inline-flex md:space-y-0 w-full p-1 text-gray-500">
+          <label for="title" class="text-sm m-1 font-poppins text-gris"
+            >Contraseña (MD5):</label
+          >
+          <div class="md:w-2/3 mx-auto">
+            <div class="sm-w-full inline-flex">
+              <input  formControlName="password"
+                id="password"
+                type="password"
+                class="
+                  appearance-none
+                  rounded-lg
+                  border border-gris-bg border-b
+                  pl-8
+                  pr-6
+                  w-full
+                  py-2
+                  bg-white
+                  focus:border-blue-light
+                  text-sm
+                  focus:outline-none
+                "
+                placeholder=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button type="submit"
+        class="
+          m-1
+          bg-blue-light
+          text-white
+          px-8
+          py-1
+          rounded-md
+          text-sm
+          font-medium
+          hover:bg-blue
+          transition
+          duration-300
+        "
+      >
+        Añadir
+      </button>
+    </div>
+  </form>
+  </div>
+</div>

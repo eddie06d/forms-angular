@@ -1,0 +1,348 @@
+<div class="">
+  <p
+    style="
+      font-family: 'Poppins';
+      font-style: normal;
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 30px;
+    "
+    class="mb-4 text-white"
+  >
+    Proceso Electoral
+  </p>
+
+  <div
+    class="w-full mx-auto bg-white shadow-lg rounded-lg border border-gray-200"
+  >
+    <header class="px-5 py-4">
+      <span class="description text-sm py-2 border-gray-400 mb-2 text-gris"
+        >A continuación puede configurar los pares usuario / contraseña para los
+        usuarios Operadores de registro. Considerar los siguientes perfiles SEA:
+      </span>
+      <ul class="px-5 list-disc">
+        <li class="text-gris">Administrador</li>
+        <li class="text-gris">Generador</li>
+      </ul>
+      <span class="description text-sm py-2 border-gray-400 mb-2 text-gris">
+        Es neceesario mantener la independencia de las operaciones de registro y
+        verificación EC ONPE, la cual recibirá estos datos por un medio seguro y
+        fuera de banda.
+      </span>
+    </header>
+
+    <div class="p-3">
+      <div class="mb-2 justify-around flex flex-row">
+        <div class="flex w-full flex-col">
+          <div class="lg:flex md:flex">
+            <span class="text-gris mx-1 text-sm">Mostrar </span>
+            <div class="relative">
+              <select
+                [(ngModel)]="size"
+                (change)="onChange()"
+                class="
+                  appearance-none
+                  rounded-lg
+                  bg-gris-bg
+                  block
+                  text-gris
+                  py-1
+                  px-1
+                  pr-5
+                  leading-tight
+                  focus:outline-none focus:bg-white focus:border-gray-500
+                "
+              >
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="20">20</option>
+              </select>
+              <div
+                class="
+                  pointer-events-none
+                  absolute
+                  inset-y-0
+                  right-0
+                  flex
+                  items-center
+                  px-2
+                  text-gray-700
+                "
+              >
+                <svg
+                  width="8"
+                  height="6"
+                  viewBox="0 0 8 6"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M8 0L3.97 6L0 0H8Z" fill="black" />
+                </svg>
+              </div>
+            </div>
+            <span class="text-gris mx-1 text-sm">Entradas </span>
+          </div>
+        </div>
+
+        <div class="flex w-full flex-col">
+          <input type="file" (change)="onImportData($event)" id="import-data" hidden>
+          <div class="lg:flex md:flex">
+            <button
+              (click)="onAction(null)"
+              class="
+                m-1
+                bg-blue-light
+                text-white
+                px-4
+                py-1
+                rounded-md
+                text-sm
+                font-medium
+                hover:bg-blue
+                transition
+                duration-300
+              "
+            >
+              Añadir
+            </button>
+            <button
+              class="
+                m-1
+                bg-blue-light
+                text-white
+                px-4
+                py-1
+                rounded-md
+                text-sm
+                font-medium
+                hover:bg-blue
+                transition
+                duration-300
+              "
+              (click)="onClickImport()"
+            >
+              Importar
+            </button>
+          </div>
+        </div>
+
+        <div class="flex w-full flex-col">
+          <div class="lg:flex md:flex">
+            <span class="mx-6 h-full text-gris pl-2"> Buscar </span>
+            <input [(ngModel)]="filter"
+            (keyup)="listar()"
+              class="
+                appearance-none
+                rounded-lg
+                border border-gris-bg border-b
+                pl-8
+                pr-6
+                w-full
+                py-2
+                bg-white
+                focus:border-blue-light
+                text-sm
+                focus:outline-none
+              "
+            />
+          </div>
+        </div>
+      </div>
+      <!-- Table -->
+      <table class="table-auto border divide-y border-gris-bg w-full">
+        <thead class="text-xs divide-x border border-gris-bg font-semibold">
+          <tr class="divide-x divide-gris-bg">
+            <th class="p-2">
+              <div class="font-semibold text-left text-gris">Código</div>
+            </th>
+            <th class="p-2">
+              <div class="font-semibold text-left text-gris">Nombre</div>
+            </th>
+            <th class="p-2">
+              <div class="font-semibold text-left text-gris">Acciones</div>
+            </th>
+          </tr>
+        </thead>
+
+        <tbody class="text-sm divide-y divide-gris-bg">
+          <!-- record 1 -->
+          <tr  *ngFor="let item of ListUsuraios; let i = index" class="divide-x divide-gris-bg">
+            <td class="p-2">
+              <div class="font-medium text-gris">{{item.id}}</div>
+            </td>
+            <td class="p-2">
+              <div class="font-medium text-gris">{{item.user}}</div>
+            </td>
+
+            <td class="p-2">
+              <div class="flex">
+                <button  (click)="onAction(item)" class="mx-1 bg-green-light text-white rounded-lg">
+                  <svg
+                    class="
+                      w-8
+                      h-8
+                      hover:text-blue-600
+                      rounded-full
+                      hover:bg-gray-100
+                      p-1
+                    "
+                    width="14"
+                    height="14"
+                    viewBox="0 0 14 14"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M12.75 12.0625H1.25C0.973437 12.0625 0.75 12.2859 0.75 12.5625V13.125C0.75 13.1938 0.80625 13.25 0.875 13.25H13.125C13.1938 13.25 13.25 13.1938 13.25 13.125V12.5625C13.25 12.2859 13.0266 12.0625 12.75 12.0625ZM3.02656 10.75C3.05781 10.75 3.08906 10.7469 3.12031 10.7422L5.74844 10.2812C5.77969 10.275 5.80938 10.2609 5.83125 10.2375L12.4547 3.61406C12.4692 3.59961 12.4807 3.58244 12.4885 3.56354C12.4963 3.54463 12.5004 3.52437 12.5004 3.50391C12.5004 3.48344 12.4963 3.46318 12.4885 3.44428C12.4807 3.42538 12.4692 3.40821 12.4547 3.39375L9.85781 0.795313C9.82812 0.765625 9.78906 0.75 9.74687 0.75C9.70469 0.75 9.66563 0.765625 9.63594 0.795313L3.0125 7.41875C2.98906 7.44219 2.975 7.47031 2.96875 7.50156L2.50781 10.1297C2.49261 10.2134 2.49804 10.2995 2.52364 10.3807C2.54923 10.4618 2.59421 10.5355 2.65469 10.5953C2.75781 10.6953 2.8875 10.75 3.02656 10.75Z"
+                      fill="white"
+                    />
+                  </svg>
+                </button>
+                <button class="mx-1 bg-red text-white rounded-lg" (click)="onDelete(item)">
+                  <svg
+                    class="
+                      w-8
+                      h-8
+                      hover:text-blue-600
+                      rounded-full
+                      hover:bg-gray-100
+                      p-1
+                    "
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                    ></path>
+                  </svg>
+                </button>
+              </div>
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+      <!-- End Table -->
+      <!-- Paginacion -->
+      <div class="mb-4 flex justify-between items-center">
+        <div class="flex-1 pr-4">
+          <div class="relative md:w-1/3">
+            <span class="text-sm text-gris"
+              >Mostrando {{ pageNum }} de {{ pages }} entradas</span
+            >
+          </div>
+        </div>
+        <div>
+          <div class="rounded-lg flex">
+            <div class="relative">
+              <ul class="flex list-none rounded my-2">
+                <li
+                  *ngIf="page >= 2"
+                  (click)="prevPage()"
+                  class="
+                    relative
+                    block
+                    py-2
+                    px-3
+                    leading-tight
+                    border border-gris-bg
+                    text-gris
+                    ml-0
+                    rounded-l
+                    hover:bg-gray-200
+                    cursor-pointer
+                  "
+                >
+                  <a class="page-link">Anterior</a>
+                </li>
+                <li
+                  *ngIf="page >= 2"
+                  (click)="goPage(page - 1)"
+                  class="
+                    relative
+                    block
+                    py-2
+                    px-3
+                    leading-tight
+                    bg-white
+                    border border-gris-bg
+                    text-gris
+                    border-r-0
+                    hover:bg-gray-200
+                    cursor-pointer
+                  "
+                >
+                  <a class="page-link">{{ page - 1 }}</a>
+                </li>
+
+                <li
+                  *ngIf="page === pageNum"
+                  class="
+                    relative
+                    block
+                    py-2
+                    px-3
+                    border-blue-light
+                    leading-tight
+                    bg-blue-light
+                    border
+                    text-white
+                    border-r-0
+                    hover:bg-gray-200
+                  "
+                >
+                  <a class="page-link"> {{ page }} </a>
+                </li>
+                <li
+                  *ngIf="page < pages"
+                  (click)="goPage(page + 1)"
+                  class="
+                    relative
+                    block
+                    py-2
+                    px-3
+                    leading-tight
+                    bg-white
+                    border border-gris-bg
+                    text-gris
+                    border-r-0
+                    hover:bg-gray-200
+                    cursor-pointer
+                  "
+                >
+                  <a class="page-link">{{ page + 1 }}</a>
+                </li>
+
+                <li
+                  *ngIf="page < pages"
+                  (click)="nextPage()"
+                  class="
+                    relative
+                    block
+                    py-2
+                    px-3
+                    leading-tight
+                    bg-white
+                    border border-gris-bg
+                    text-gris
+                    rounded-r
+                    hover:bg-gray-200
+                    cursor-pointer
+                  "
+                >
+                  <a class="page-link">Siguiente</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End Paginacion -->
+    </div>
+  </div>
+</div>
